@@ -152,7 +152,7 @@ The types of the COT reports:
     - available as Futures-and-Options Combined report
     - available from 2006
     - available in short format
-    - Why was this report established? With the publication of the Supplemental COT report the CFTC has reacted on the rise of index traders. The commission started to publish the Supplemental report starting in 2006 with a further trader categorization of index traders for selected agricultural products to prevent a blending of traditional commercial positions and also of traditional non-commercial position with index funds positions. With the newly introduced classification of index traders misinterpretation related to export activity buying or selling end-user are avoided, by differentiating between traditional and non-traditional hedgers as well as between traditional non-commercial and index funds open interest. In general from the non-commercial category managed funds, pension funds and other institutional investors that are generally seeking exposure to commodity prices as an asset class in an unleveraged and passively-managed manner through standardized commodity indices are drawn into the index trader categorization. From the commercial category entities, whose positions predominantly reflect hedging of OTC transactions through commodity indices, are drawn into the index trader categorization. The Supplemental reports solved a disadvantage with respect to the usefulness of the information and to serve the original intent in publishing the COT data better by enhancing the transparency of the publication.   
+    - Why was this report established? With the publication of the Supplemental COT report the CFTC has reacted on the rise of index traders. The commission started to publish the Supplemental report starting in 2006 with a further trader categorization of index traders for selected agricultural products to prevent a blending of traditional commercial positions and also of traditional non-commercial position with index funds positions. With the newly introduced classification of index traders misinterpretation related to export activity buying or selling end-user are avoided, by differentiating between traditional and non-traditional hedgers as well as between traditional non-commercial and index funds open interest. In general from the non-commercial category managed funds, pension funds and other institutional investors that are generally seeking exposure to commodity prices as an asset class in an unleveraged and passively-managed manner through standardized commodity indices are drawn into the index trader categorization. From the commercial category entities, whose positions predominantly reflect hedging of OTC transactions through commodity indices, are drawn into the index trader categorization. The Supplemental reports solved a disadvantage with respect to the usefulness of the information and serves the original intent in publishing the COT data better by enhancing the transparency.   
     
     
 3. Disaggregated
@@ -175,7 +175,7 @@ The types of the COT reports:
         - Asset Manager/Institutional
         - Leveraged Funds
         - Other Reportable
-     - available as Futures-only and Futures-and-Options Combined reports
+    - available as Futures-only and Futures-and-Options Combined reports
     - available from 2006
     - available in long format
 
@@ -253,7 +253,7 @@ Here are the ones I can think of:
     - hosting data in a cleaned form (as the data contains somes cleanable parts) for enhanced frictionless access
     
 7. Acceptance of new technologies through commercial activities
-    - analysis of the acceptance of new technologies, through a screening if evidence for increased commercial interest activities can be found; example: commercial activities in the bitcoin futures of the Chicago Mercantile Exchange (CME) 
+    - analysis of the acceptance of new technologies, through a screening if evidence for increased commercial interest activities can be found; example: commercial activities in Bitcoin futures at the Chicago Mercantile Exchange (CME) 
 
 
 ## Sources 
