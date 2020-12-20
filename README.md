@@ -8,7 +8,7 @@
     - [Data release](#data-release)
     - [COT report types](#cot-report-types)
     - [Format of the reports](#format-of-the-reports)
-    - [Classification methodology Legacy report](#classification-methodology-Legacy-report)
+    - [Classification methodology Legacy reports](#classification-methodology-Legacy-reports)
     - [Data aggregation](#data-aggregation)
     - [Use cases of the COT reports](#use-cases-of-the-COT-reports)
 - [Sources](#sources)
@@ -65,13 +65,13 @@ Available report types with the corresponding 'cot_report_type' name used in the
 
 Usage examples: 
 
-- ***cot_hist()*** downloads the compressed bulk files for the specified report (cot_report_type) starting from 1986 to 2016 and returns the data in a dataframe.
+- ***cot_hist()*** downloads the compressed bulk files for the specified report (cot_report_type) starting  from 1986 (depending on the report type) up to 2016 and returns the data in a dataframe.
 
-- ***cot_year()*** downloads historical single year data for the specified report (cot_report_type)  and returns the data in a dataframe (cot_report_type).
+- ***cot_year()*** downloads historical single year data for the specified report (cot_report_type) and returns the data in a dataframe (cot_report_type). If the current year is specified, the latest published data is fetched.
 
-- ***cot_all()*** downloads the complete available data of the specified report and returns the data in a dataframe (cot_report_type).
+- ***cot_all()*** downloads the complete available data, including the latest, of the specified report and returns the data in a dataframe (cot_report_type).
 
-- ***cot_all_reports()*** downloads all available historical information on all COT reports and returns the data as seven dataframes.
+- ***cot_all_reports()*** downloads all available historical information of the available COT reports and returns the data as seven dataframes.
 
 
 ```python
@@ -83,11 +83,13 @@ df = cot.cot_hist(cot_report_type= "traders_in_financial_futures_futopt")
 
 # Example: cot_year()
 df = cot.cot_year(year = 2020, cot_report_type = "traders_in_financial_futures_fut")
-# cot_year() downloads the  single year file of the specified report type and year. Returns the data as dataframe.
+# cot_year() downloads the single year file of the specified report type and year. Returns the data as dataframe.
 
-# Example for collecting data of a few years of a specified report:
+# Example for collecting data of a few years, here from 2017 to 2020, of a specified report:
 df = pd.DataFrame()
-for i in range(2017, 2021):
+begin_year = 2017
+end_year = 2020
+for i in range(begin_year, end_year + 1):
     single_year = pd.DataFrame(cot.cot_year(i, cot_report_type="legacy_futopt")) 
     df = df.append(single_year, ignore_index=True)
 
@@ -150,7 +152,7 @@ The types of the COT reports:
     - available as Futures-and-Options Combined report
     - available from 2006
     - available in short format
-    - Why was this report established? With the publication of the Supplemental COT report the CFTC has reacted on the rise of index traders. The commission started to publish the Supplemental report starting in 2006 with a further trader categorization of index traders for selected agricultural products to prevent a blending of traditional commercial positions and also of traditional non-commercial position with index funds positions. With the newly introduced classification of index traders misinterpretation related to export activity buying or selling end-user are avoided, by differentiating between traditional and non-traditional hedgers as well as between traditional non-commercial and index funds open interest. In general from the non-commercial category managed funds, pension funds and other institutional investors that are generally seeking exposure to commodity prices as an asset class in an unleveraged and passively-managed manner through standardized commodity indices are drawn into the index trader categorization. From the commercial category, entities whose positions predominantly reflect hedging of OTC transactions through commodity indices, are drawn into the index trader categorization. The Supplemental reports solved a disadvantage with respect to the usefulness of the information to serve the original intent in publishing the COT data better by enhancing the transparency of the publication.   
+    - Why was this report established? With the publication of the Supplemental COT report the CFTC has reacted on the rise of index traders. The commission started to publish the Supplemental report starting in 2006 with a further trader categorization of index traders for selected agricultural products to prevent a blending of traditional commercial positions and also of traditional non-commercial position with index funds positions. With the newly introduced classification of index traders misinterpretation related to export activity buying or selling end-user are avoided, by differentiating between traditional and non-traditional hedgers as well as between traditional non-commercial and index funds open interest. In general from the non-commercial category managed funds, pension funds and other institutional investors that are generally seeking exposure to commodity prices as an asset class in an unleveraged and passively-managed manner through standardized commodity indices are drawn into the index trader categorization. From the commercial category entities, whose positions predominantly reflect hedging of OTC transactions through commodity indices, are drawn into the index trader categorization. The Supplemental reports solved a disadvantage with respect to the usefulness of the information and to serve the original intent in publishing the COT data better by enhancing the transparency of the publication.   
     
     
 3. Disaggregated
@@ -178,12 +180,12 @@ The types of the COT reports:
     - available in long format
 
 ### Format of the reports
-The COT reports are either available in the short format, the long formats or both - as specified above. Within the long format, aside from the additional listing of the concentrations of positions held by the largest four and largest eight traders, the data is grouped by crop year, where appropriate. Except, where not available (cot report type: Supplemental), the library accesses the long format. 
+The COT reports are either available in the short format, the long format or both - as specified above. Within the long format, aside from the additional listing of the concentrations of positions held by the largest four and largest eight traders, the data is grouped by crop year, where appropriate. Except, where not available (cot report type: Supplemental), the library accesses the long format. 
 
 ### Data aggregation
 Aggregations occur in the reports not only in the classification of the trader, but also by merging future positions with differing expiration dates. Due to this handling continuous sentiment data on a product, referred to as market by the CFTC and within the COT reports, can be derived. As the data is highly aggregated, any results derived from the data should be interpreted with caution. 
 
-### Classification methodology Legacy report
+### Classification Methodology Legacy reports 
 
 Not only does the Legacy Futures-only COT report offer the greatest available historical data dating back to 1986, the Legacy reports also contain the most markets in comparison to the other COT report types. Unlike the others, the Legacy reports contain data on physical delivery contracts and non-physical delivery (financial) contracts. While the Supplemental and the Disaggregated reports are limited to physical delivery contracts, the Traders in Financial Futures reports are limited to non-physical financial contracts.
 
@@ -204,7 +206,7 @@ The positions of the market participants in the Legacy reports are broken down i
 
 - Non-reportable
     - these market participants hold positions below the reporting levels of the CFTC
-    - while the to the CFTC reporting firms are not informing the commission on this group, the aggreated non-reportable positions are nevertheless known to the CFTC through its information on the open interest data (and the reported commercials and non-commercials details)
+    - while the to the CFTC reporting firms are not informing the commission on this group, the aggregated non-reportable positions are nevertheless known to the CFTC through its information on the open interest data (and the reported commercials and non-commercials details)
         
 ### Use cases of the COT reports
 
@@ -217,42 +219,41 @@ Here are the ones I can think of:
         - establishing new monitoring facitilities through Machine Learning
         - adding specific changes to the report to improve detecting misbehauviours of markets participants
     - analyse effects of past regulatory changes and regulatory demands
-    - analyse price manipulations (this may not be identifiable  on the CFTC’s confidential trader-level data, which is not accessible. However, less aggregated data has been provided to a number of researchers in the past.)
+    - analyse price manipulations (this may only be identifiable in the CFTC’s confidential trader-level data, which is not accessible. However, less aggregated data has been provided to a number of researchers in the past.)
     - add research/recommendations on limiting speculative bets on commodities
-    - evaluate if other trading commissions (other countries) should establish a COT like data base to combat misbehauviours and as a screening tool for market risks
+    - evaluate if other trading commissions (other countries) should establish a COT like database to combat misbehauviours and as a screening tool for market risks
     - analyse the usage of leverage and possible worst case scenarios targeting preventions of financial harm to commercials/investors
 
 2. Central banks:
     - assess liquidity and systemic risk
-    - assess bets on/against a currency, evaluate impact of decisions or costs of defending a thresshold in a currceny pair (example: SNB defended the 1.2 level for years up until early 2015 in the EUR/CHF pair and artifically stabilized the currency through acitivities, particulary in the treasuries and currency markets (including other CHF cross pairs). Further, the SBN's decision to not continue the support of the price limit caused a significant shock to the EUR/CHF price due to massive long exposure/herding of speculators and a severe liquidity shortage below the mark of 1.2)
+    - assess bets on/against a currency, evaluate impact of decisions or costs of defending a thresshold in a currceny pair; example: the Swiss National Bank (SNB) defended the 1.2 level in the EUR/CHF pair for years up until early 2015 and artifically stabilized the currency through acitivities, particulary in the treasuries and currency markets (including other CHF cross pairs). Further, the SNB's decision to not continue the support of the price limit caused a significant shock to the EUR/CHF price due to massive long exposure/herding of speculators and a severe liquidity shortage below the mark of 1.2.
 
 3. Market participants:
     - Producers/Merchants: 
-        - can monitor the behaviour of their competitors to time actions (hedge positions) or other strategic decisions; a farmer might decide on what to grow next saison based on the commercial position
+        - can monitor the behaviour of their competitors to time actions (hedge positions) or other strategic decisions; example: a farmer might decide on what to grow next saison based on the commercial position
     - Speculators: 
-        - evaluate if information is priced in (high vs. low changes in positions after an event with potentially high impact)
+        - evaluate if information is priced in (high vs. low position changes after events with potentially high impact)
         - analyse the behaviour of competitors
-        - detect the "mood of the markets"
+        - detect the "mood of the markets" (risk aversion or risk appetite of market participants)
         - derive trading approaches
 
 4. Market observers:
      - for buy-side analysts research
      - for coverage of financial journalists
-     - monotoring of changes in positions or their values in a comparable metric, once derived, such as the U.S. dollar
+     - monitoring of changes in positions or their values in a comparable metric, once derived, such as the U.S. dollar
      
 5. (Behavioural) Finance:
     - add value to the research of market dynamics and trends/herding
-    - analyse reactions/changes in positions prior and after market events, such as Interest rate decisions or other macroeconomic factor/shocks
+    - analyse reactions/changes in positions prior and after market events, such as interest rate decisions or other macroeconomic factor/shocks
     - comparison/understanding of not only changes in price, but also activities in the markets 
     - effects of political events or geopolitical events
-    - detecting overall market "mood" 
     - detecting mispricing through extremes in the position
     
 6. Data vendors:
-    - hosting data in a cleaned form, as the data contains somes cleanable parts, for enhanced frictionless access
+    - hosting data in a cleaned form (as the data contains somes cleanable parts) for enhanced frictionless access
     
 7. Acceptance of new technologies through commercial activities
-    - analysis of the acceptance of new technologies, through a screening if evidence for increased commercial interest activities can be found (Example: Bitcoin)
+    - analysis of the acceptance of new technologies, through a screening if evidence for increased commercial interest activities can be found; example: commercial activities in the bitcoin futures of the Chicago Mercantile Exchange (CME) 
 
 
 ## Sources 
