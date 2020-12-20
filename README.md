@@ -216,10 +216,10 @@ Here are the ones I can think of:
 1. Regulatory/Academic:
     - formulate recommendations to the CFTC, such as
         - enlarging transparency
-        - establishing new monitoring facitilities through Machine Learning
+        - establishing new monitoring facilities through Machine Learning
         - adding specific changes to the report to improve detecting misbehauviours of markets participants
     - analyse effects of past regulatory changes and regulatory demands
-    - analyse price manipulations (this may only be identifiable in the CFTC’s confidential trader-level data, which is not accessible. However, less aggregated data has been provided to a number of researchers in the past.)
+    - analyse price manipulations (this may only be identifiable through the CFTC’s confidential trader-level data, which is not accessible, but less aggregated data than publicly available has been provided to a number of researchers in the past)
     - add research/recommendations on limiting speculative bets on commodities
     - evaluate if other trading commissions (other countries) should establish a COT like database to combat misbehauviours and as a screening tool for market risks
     - analyse the usage of leverage and possible worst case scenarios targeting preventions of financial harm to commercials/investors
