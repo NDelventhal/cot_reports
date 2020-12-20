@@ -1,10 +1,9 @@
 import pandas as pd
 import requests, zipfile, io
-#from urllib.request import urlopen
 from datetime import date
 from beautifulsoup4 import BeautifulSoup
 
-##cot_hist - downloads compressed bulk files
+# cot_hist - downloads compressed bulk files
 
 def cot_hist(cot_report_type = "legacy_fut"):
     '''Downloads the compressed COT report historical data of the selected report type
@@ -79,10 +78,10 @@ def cot_hist(cot_report_type = "legacy_fut"):
     df = pd.read_csv(txt, low_memory=False)
     return df
 
-#Example:
-#df = cot_hist(cot_report_type= "traders_in_financial_futures_futopt")
+## Example:
+## df = cot_hist(cot_report_type= "traders_in_financial_futures_futopt")
 
-##cot_year - downloads single years"
+# cot_year - downloads single years
 
 def cot_year(year = 2020, cot_report_type = "legacy_fut"):    
     '''Downloads the selected COT report historical data for a single year
@@ -155,17 +154,11 @@ def cot_year(year = 2020, cot_report_type = "legacy_fut"):
     print("Downloaded single year data from:", year)
     return df
 
-#"Example:"
-#df = cot_year(year = 2019, cot_report_type = "traders_in_financial_futures_fut")
+## Example:
+## df = cot_year(year = 2019, cot_report_type = "traders_in_financial_futures_fut")
 
-"""Example for collecting multiple years:"""
 
-#df = pd.DataFrame()
-#for i in range(2017, 2021):
-#        years = pd.DataFrame(cot_year(i, cot_report_type="legacy_futopt")) 
-#        df = df.append(years, ignore_index=True)
-
-##cot_all - downloads complete available data of a chosen COT report type
+# cot_all - downloads complete available data of a chosen COT report type
 
 def cot_all(cot_report_type="legacy_fut"): 
     '''Downloads all historical data for the chosen COT report type (compressed historical bulk
@@ -197,11 +190,10 @@ def cot_all(cot_report_type="legacy_fut"):
         df = df.append(years, ignore_index=True) 
     return df
 
-"""Example:"""
+## Example:
+## df = cot_all(cot_report_type="legacy_futopt")
 
-#cot_all(cot_report_type="legacy_futopt")
-
-"""#####cot_all_reports - downloads complete available data for all COT report types"""
+# cot_all_reports - downloads complete available data for all COT report types
 
 def cot_all_reports():   
   '''Downloads all available historical information of all COT reports and returns a dataframe for 
@@ -233,10 +225,10 @@ def cot_all_reports():
   vars()['{}'.format("disaggregated_fut")],vars()['{}'.format("disaggregated_futopt")],vars()['{}'.format("traders_in_financial_futures_fut")],\
   vars()['{}'.format("traders_in_financial_futures_futopt")]
 
-#Example:
-#df_l, df_lo, df_s, df_d, df_do, df_t, df_to = cot_all_reports()
+## Example:
+## df_l, df_lo, df_s, df_d, df_do, df_t, df_to = cot_all_reports()
 
-##cot_description
+# cot_description
 
 def cot_decription():
   '''Scrapes the for the COT legacy report relevant parts of the explanatory notes offered by the CFTC from cftc.gov
@@ -278,5 +270,5 @@ def cot_decription():
   df = pd.DataFrame(x, columns = ['var_info', 'exp_not'])
   return df
 
-#Example:
-#df_expl_not = cot-reports.cot_decription()
+## Example:
+## expl_not = cot_decription()
