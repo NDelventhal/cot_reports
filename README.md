@@ -16,12 +16,12 @@
 - [License](#license)
 <!-- /TOC -->
 
-# cot-reports
+## cot-reports
 **cot-reports** is a Python library for fetching the Commitments of Trader reports of the Commodity Futures Trading Commission (CFTC). The following Commitments of Trader reports are supported: Legacy Futures-only, Legacy Futures-and-Options Combined, Supplemental Futures-and-Options Combined, Disaggregated Futures-only, Disaggregated Futures-and-Options Combined, Traders in Financial Futures (TFF) Futures-only and Traders in Financial Futures (TFF) Futures-and-Options Combined.
 
 Please note: The functionality of the libraries' functions may interrupt in case any changes in the publication occur or in case the website is not available.  
 
-# Installation
+## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install cot-reports (not available yet!)
 
@@ -34,7 +34,7 @@ Or install the library through the author's Github repository
 pip install git+https://github.com/NDelventhal/cot-reports
 ```
 
-# Requirements 
+## Requirements 
 
 The following libraries are required: 
 - pandas
@@ -48,7 +48,7 @@ These libraries can be installed via the package manager [pip](https://pip.pypa.
 pip install numpy pandas requests beautifulsoup4
 ```
 
-# Usage
+## Usage
 
 Available report types with the corresponding 'cot_report_type' name used in the library:
 
@@ -91,7 +91,7 @@ df = cot.cot_all(cot_report_type="legacy_fut")
 # cot_all() downloads the historical bulk file and all remaining single year files of the specified report type.  Returns the data as dataframe.
 ```
 
-# Introduction to the COT reports
+## Introduction to the COT reports
 
 To promote its goals of integrity, resilience and vibrancy of the U.S. derivatives markets through regulation, the U.S. Commodity Futures Trading Commission (CFTC) relies on collected data to conduct its functions. The CFTC's functions:
 
@@ -116,11 +116,11 @@ The data is reported to the CFTC by firms, such as:
 
 The actual trader classification is based on the predominant business purpose, which is self-reported by traders on the CFTC Form 401. The classification of a trader can vary for different commodities/markets, if the reported business purposes differ. However, the classifications are subject to review and corrections by the CFTC.
 
-# Data release
+## Data release
 
 The data, which is generally released each Friday at 3:30 pm Eastern time, comes with a lag of three days, as the reported data is typically from previous Tuesday (close). According to the commission the firms report to the CFTC on Wednesday morning. Next, the provided information is then subject to corrections and verifications by the CFTC prior to the release on Friday.
 
-# COT report types
+## COT report types
 
 The types of the COT reports:
 
@@ -173,13 +173,13 @@ The types of the COT reports:
     - available from 2006
     - available in long format
 
-# Format of the reports
+## Format of the reports
 The COT reports are either available in the short format, the long formats or both - as specified above. Within the long format, aside from the additional listing of the concentrations of positions held by the largest four and largest eight traders, the data is grouped by crop year, where appropriate. Except, where not available (cot report type: Supplemental), the library accesses the long format. 
 
-# Data aggregation
+## Data aggregation
 Aggregations occur in the reports not only in the classification of the trader, but also by merging future positions with differing expiration dates. Due to this handling continuous sentiment data on a product, referred to as market by the CFTC and within the COT reports, can be derived. As the data is highly aggregated, any results derived from the data should be interpreted with caution. 
 
-# Classification methodology Legacy report
+## Classification methodology Legacy report
 
 Not only does the Legacy Futures-only COT report offer the greatest available historical data dating back to 1986, the Legacy reports also contain the most markets in comparison to the other COT report types. Unlike the others, the Legacy reports contain data on physical delivery contracts and non-physical delivery (financial) contracts. While the Supplemental and the Disaggregated reports are limited to physical delivery contracts, the Traders in Financial Futures reports are limited to non-physical financial contracts.
 
@@ -202,7 +202,7 @@ The positions of the market participants in the Legacy reports are broken down i
     - these market participants hold positions below the reporting levels of the CFTC
     - while the to the CFTC reporting firms are not informing the commission on this group, the aggreated non-reportable positions are nevertheless known to the CFTC through its information on the open interest data (and the reported commercials and non-commercials details)
         
-#  Use cases of the COT reports
+## Use cases of the COT reports
 
 There are numerous, partially overlapping, use cases for the COT data of the CFTC.
 Here are the ones I can think of: 
