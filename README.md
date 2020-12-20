@@ -217,7 +217,7 @@ Here are the ones I can think of:
     - formulate recommendations to the CFTC, such as
         - enlarging transparency
         - establishing new monitoring facilities through Machine Learning
-        - adding specific changes to the report to improve detecting misbehauviours of markets participants
+        - adding specific changes to the report to improve detecting misbehaviours of markets participants
     - analyse effects of past regulatory changes and regulatory demands
     - analyse price manipulations (this may only be identifiable through the CFTC’s confidential trader-level data, which is not accessible, but less aggregated data than publicly available has been provided to a number of researchers in the past)
     - add research/recommendations on limiting speculative bets on commodities
@@ -226,11 +226,11 @@ Here are the ones I can think of:
 
 2. Central banks:
     - assess liquidity and systemic risk
-    - assess bets on/against a currency, evaluate impact of decisions or costs of defending a thresshold in a currceny pair; example: the Swiss National Bank (SNB) defended the 1.2 level in the EUR/CHF pair for years up until early 2015 and artifically stabilized the currency through acitivities, particulary in the treasuries and currency markets (including other CHF cross pairs). Further, the SNB's decision to not continue the support of the price limit caused a significant shock to the EUR/CHF price due to massive long exposure/herding of speculators and a severe liquidity shortage below the mark of 1.2.
+    - assess bets on/against a currency, evaluate impact of decisions or costs of defending a thresshold in a currency pair; example: the Swiss National Bank (SNB) defended the 1.2 level in the EUR/CHF pair for years up until early 2015 and artificially stabilized the currency through activities, particularly in the treasuries and currency markets (including other CHF cross pairs). Further, the SNB's decision to not continue the support of the price limit caused a significant shock to the EUR/CHF price due to massive long exposure/herding of speculators and a severe liquidity shortage below the mark of 1.2.
 
 3. Market participants:
     - Producers/Merchants: 
-        - can monitor the behaviour of their competitors to time actions (hedge positions) or other strategic decisions; example: a farmer might decide on what to grow next saison based on the commercial position
+        - can monitor the behaviour of their competitors to time actions (hedge positions) or other strategic decisions; example: a farmer might decide on what to grow next season based on the commercial position
     - Speculators: 
         - evaluate if information is priced in (high vs. low position changes after events with potentially high impact)
         - analyse the behaviour of competitors
@@ -244,7 +244,7 @@ Here are the ones I can think of:
      
 5. (Behavioural) Finance:
     - add value to the research of market dynamics and trends/herding
-    - analyse reactions/changes in positions prior and after market events, such as interest rate decisions or other macroeconomic factor/shocks
+    - analyse reactions/changes in positions prior and following market events, such as interest rate decisions or other macroeconomic factors/shocks
     - comparison/understanding of not only changes in price, but also activities in the markets 
     - effects of political events or geopolitical events
     - detecting mispricing through extremes in the position
