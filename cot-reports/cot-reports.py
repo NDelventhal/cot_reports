@@ -230,7 +230,7 @@ def cot_all_reports():
 
 # cot_description
 
-def cot_decription():
+def cot_description():
   '''Scrapes the for the COT legacy report relevant parts of the explanatory notes offered by the CFTC from cftc.gov
   Returns:
     A DataFrames differing in their variables and size.
@@ -271,4 +271,4 @@ def cot_decription():
   return df
 
 ## Example:
-## expl_not = cot_decription()
+## expl_not = cot_description()
