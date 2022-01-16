@@ -17,15 +17,13 @@
 <!-- /TOC -->
 
 ## cot_reports
-Current status: in development 
-
 **cot_reports** is a Python library for fetching the Commitments of Trader reports of the Commodity Futures Trading Commission (CFTC). The following Commitments of Trader reports are supported: Legacy Futures-only, Legacy Futures-and-Options Combined, Supplemental Futures-and-Options Combined, Disaggregated Futures-only, Disaggregated Futures-and-Options Combined, Traders in Financial Futures (TFF) Futures-only and Traders in Financial Futures (TFF) Futures-and-Options Combined.
 
 Please note: The functionality of the libraries' functions may interrupt in case any changes in the publication occur or in case the website is not available.  
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install cot_reports (not available yet!)
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install cot_reports 
 
 ```python
 pip install cot_reports  
