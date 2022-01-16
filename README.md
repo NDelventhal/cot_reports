@@ -1,12 +1,12 @@
 <!-- TOC -->
 ## Table of Content
-- [cot-reports](#cot-reports) 
+- [cot_reports](#cot-reports) 
 - [Installation](#installation)
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Introduction to the COT reports](#introduction-to-the-cot-reports)
     - [Data release](#data-release)
-    - [COT report types](#cot-report-types)
+    - [COT report types](#cot_report-types)
     - [Format of the reports](#format-of-the-reports)
     - [Classification methodology Legacy reports](#classification-methodology-Legacy-reports)
     - [Data aggregation](#data-aggregation)
@@ -16,24 +16,24 @@
 - [License](#license)
 <!-- /TOC -->
 
-## cot-reports
+## cot_reports
 Current status: in development 
 
-**cot-reports** is a Python library for fetching the Commitments of Trader reports of the Commodity Futures Trading Commission (CFTC). The following Commitments of Trader reports are supported: Legacy Futures-only, Legacy Futures-and-Options Combined, Supplemental Futures-and-Options Combined, Disaggregated Futures-only, Disaggregated Futures-and-Options Combined, Traders in Financial Futures (TFF) Futures-only and Traders in Financial Futures (TFF) Futures-and-Options Combined.
+**cot_reports** is a Python library for fetching the Commitments of Trader reports of the Commodity Futures Trading Commission (CFTC). The following Commitments of Trader reports are supported: Legacy Futures-only, Legacy Futures-and-Options Combined, Supplemental Futures-and-Options Combined, Disaggregated Futures-only, Disaggregated Futures-and-Options Combined, Traders in Financial Futures (TFF) Futures-only and Traders in Financial Futures (TFF) Futures-and-Options Combined.
 
 Please note: The functionality of the libraries' functions may interrupt in case any changes in the publication occur or in case the website is not available.  
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install cot-reports (not available yet!)
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install cot_reports (not available yet!)
 
 ```python
-pip install cot-reports  
+pip install cot_reports  
 ```
 Or install the library through the author's Github repository 
 
 ```python
-pip install git+https://github.com/NDelventhal/cot-reports
+pip install git+https://github.com/NDelventhal/cot_reports
 ```
 
 ## Requirements 
@@ -75,14 +75,14 @@ Usage examples:
 
 
 ```python
-import cot-reports as cot
+import cot_reports as cot
 
 # Example: cot_hist()
-df = cot.cot_hist(cot_report_type= "traders_in_financial_futures_futopt")
+df = cot.cot_hist(cot_report_type= 'traders_in_financial_futures_futopt')
 # cot_hist() downloads the historical bulk file for the specified report type, in this example the Traders in Financial Futures Futures-and-Options Combined report. Returns the data as dataframe.
 
 # Example: cot_year()
-df = cot.cot_year(year = 2020, cot_report_type = "traders_in_financial_futures_fut")
+df = cot.cot_year(year = 2020, cot_report_type = 'traders_in_financial_futures_fut')
 # cot_year() downloads the single year file of the specified report type and year. Returns the data as dataframe.
 
 # Example for collecting data of a few years, here from 2017 to 2020, of a specified report:
@@ -90,11 +90,11 @@ df = pd.DataFrame()
 begin_year = 2017
 end_year = 2020
 for i in range(begin_year, end_year + 1):
-    single_year = pd.DataFrame(cot.cot_year(i, cot_report_type="legacy_futopt")) 
+    single_year = pd.DataFrame(cot.cot_year(i, cot_report_type='legacy_futopt')) 
     df = df.append(single_year, ignore_index=True)
 
 # Example: cot_all()
-df = cot.cot_all(cot_report_type="legacy_fut")
+df = cot.cot_all(cot_report_type='legacy_fut')
 # cot_all() downloads the historical bulk file and all remaining single year files of the specified report type.  Returns the data as dataframe.
 ```
 
@@ -110,7 +110,7 @@ To promote its goals of integrity, resilience and vibrancy of the U.S. derivativ
     
 In order to conduct these functions, data is seen as a critical asset to the CFTC, which states to have been one of the first federal agencies who implemented a data management organization in 2011. The CFTC is not solely collecting but also publishing a variety of reports on the derivative markets under its jurisdiction. These reports include the Commitment of Traders (COT) reports.
 
-Through the publication of the COT reports the CFTC claims "to help the public to understand market dynamics."
+Through the publication of the COT reports the CFTC claims 'to help the public to understand market dynamics.'
 
 The COT reports provide a breakdown of each Tuesday’s open interest for futures and options on futures markets in which 20 or more traders hold positions equal to or above the reporting levels established by the CFTC.
 
@@ -197,7 +197,7 @@ The positions of the market participants in the Legacy reports are broken down i
     - market participants who use futures contracts for hedging as defined in CFTC Regulation 1.3, 17 CFR 1.3(z) and which hold positions equal to or above the reporting levels established by the CFTC
     - CFTC Form 40 declaration: the trader is engaged in business activities, which can be hedged by the use of futures (or options)
     - Example: A gold mining company, such as Goldcorp or Barrick Gold, would be classified as commercials in gold futures, as well as other merchants, processors or users buying and selling Gold
-    - using descriptions of the other reports I derive the non-commercials to contain primarily producer/merchant/processor/user and swap dealers
+    - using descriptions of the other reports I derive the commercials to contain primarily producer/merchant/processor/user and swap dealers
 
 - Non-commercials
     - market participant whose positions equal or are above the reporting levels of by the CFTC and are not considered as commercials
@@ -234,7 +234,7 @@ Here are the ones I can think of:
     - Speculators: 
         - evaluate if information is priced in (high vs. low position changes after events with potentially high impact)
         - analyse the behaviour of competitors
-        - detect the "mood of the markets" (risk aversion or risk appetite of market participants)
+        - detect the 'mood of the markets' (risk aversion or risk appetite of market participants)
         - derive trading approaches
 
 4. Market observers:
@@ -263,21 +263,20 @@ Here are the ones I can think of:
 - Sources of the above information on the CFTC and the COT reports: 
     - [CFTC About: Mission](https://cftc.gov/About/Mission/index.htm)
     - [CFTC Market Reports: Commitments of Traders](https://cftc.gov/MarketReports/CommitmentsofTraders/index.htm) 
-    - [CFTC Commission Actions in Response to the “Comprehensive Review of the Commitments of Traders Reporting Program” (June 21, 2006)](https://www.cftc.gov/sites/default/files/idc/groups/public/@commitmentsoftraders/documents/file/noticeonsupplementalcotrept.pdf)
+    - [CFTC Commission Actions in Response to the 'Comprehensive Review of the Commitments of Traders Reporting Program' (June 21, 2006)](https://www.cftc.gov/sites/default/files/idc/groups/public/@commitmentsoftraders/documents/file/noticeonsupplementalcotrept.pdf)
     - [CFTC FORM 40 STATEMENT OF REPORTING TRADER](https://www.cftc.gov/sites/default/files/idc/groups/public/@forms/documents/file/cftcform40.pdf) 
 
 
 ## Roadmap
 
--  creation of the predecessor of this library within the seminar course 'Statistical Programming and Open Science Methods (PhD-level)' of the Humboldt University of Berlin (Q1 2020)
-- adding library to The Python Package Index (PyPI) (Q4 2020 - Q1 2021)
+- creation of the predecessor of this library within the seminar course 'Statistical Programming and Open Science Methods (PhD-level)' of the Humboldt University of Berlin (Q1 2020)
+- adding library to The Python Package Index (PyPI) 
 
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/NDelventhal/cot-reports/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/NDelventhal/cot_reports/blob/main/LICENSE).
 
 ## Contact
 
 - The author: Niall Delventhal - ni.delventhal@gmail.com
-
