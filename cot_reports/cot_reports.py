@@ -1,7 +1,7 @@
 import pandas as pd
 import requests, zipfile, io
 from datetime import date
-from beautifulsoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 # cot_hist - downloads compressed bulk files
 
