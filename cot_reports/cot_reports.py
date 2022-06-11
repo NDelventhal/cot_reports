@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import requests, zipfile, io
 from datetime import date
@@ -5,7 +6,7 @@ from bs4 import BeautifulSoup
 
 # cot_hist - downloads compressed bulk files
 
-def cot_hist(cot_report_type = "legacy_fut"):
+def cot_hist(cot_report_type = "legacy_fut", store_txt=True):
     '''Downloads the compressed COT report historical data of the selected report type
     starting from, depending on the selected report type, 1986, 1995 or 2006 until 2016
     from the cftc.gov webpage as zip file, unzips the downloaded folder and returns
@@ -74,8 +75,11 @@ def cot_hist(cot_report_type = "legacy_fut"):
     req = requests.get(cot_url) 
     z = zipfile.ZipFile(io.BytesIO(req.content))
     z.extractall()
-    print("Stored the extracted file", txt, "in the working directory.")
     df = pd.read_csv(txt, low_memory=False)
+    if store_txt:
+        print("Stored the extracted file", txt, "in the working directory.")
+    else:
+        os.remove(txt)
     return df
 
 ## Example:
@@ -83,7 +87,7 @@ def cot_hist(cot_report_type = "legacy_fut"):
 
 # cot_year - downloads single years
 
-def cot_year(year = 2020, cot_report_type = "legacy_fut"):    
+def cot_year(year = 2020, cot_report_type = "legacy_fut", store_txt=True):    
     '''Downloads the selected COT report historical data for a single year
     from the cftc.gov webpage as zip file, unzips the downloaded folder and returns
     the cot data as DataFrame.
@@ -152,6 +156,10 @@ def cot_year(year = 2020, cot_report_type = "legacy_fut"):
     z.extractall()
     df = pd.read_csv(txt, low_memory=False)  
     print("Downloaded single year data from:", year)
+    if store_txt:
+        print("Stored the file", txt, "in the working directory.")
+    else:
+        os.remove(txt)
     return df
 
 ## Example:
@@ -160,7 +168,7 @@ def cot_year(year = 2020, cot_report_type = "legacy_fut"):
 
 # cot_all - downloads complete available data of a chosen COT report type
 
-def cot_all(cot_report_type="legacy_fut"): 
+def cot_all(cot_report_type="legacy_fut", store_txt=True): 
     '''Downloads all historical data for the chosen COT report type (compressed historical bulk
     file and all remaining single year files) from the cftc.gov webpage as zip files, 
     unzips the downloaded folders and returns the cot data files merged as a DataFrame.
@@ -184,9 +192,9 @@ def cot_all(cot_report_type="legacy_fut"):
     Raises:
         ValueError: Raises an exception and returns the argument options.'''  
 
-    df = cot_hist(cot_report_type)
+    df = cot_hist(cot_report_type, store_txt=store_txt)
     for i in range(2017, date.today().year+1):
-        years = pd.DataFrame(cot_year(i, cot_report_type)) 
+        years = pd.DataFrame(cot_year(i, cot_report_type, store_txt=store_txt))
         df = df.append(years, ignore_index=True) 
     return df
 
@@ -195,7 +203,7 @@ def cot_all(cot_report_type="legacy_fut"):
 
 # cot_all_reports - downloads complete available data for all COT report types
 
-def cot_all_reports():   
+def cot_all_reports(store_txt=True):   
   '''Downloads all available historical information of all COT reports and returns a dataframe for 
   each of the report types - seven in total. 
   The function iterates through cot_reports.cot_all() for each cot report type. 
@@ -219,7 +227,7 @@ def cot_all_reports():
   for report in l: 
     print(report)
     temp = '{}'.format(report)
-    vars()[temp] = cot_all(cot_report_type=report)
+    vars()[temp] = cot_all(cot_report_type=report, store_txt=store_txt)
 
   return  vars()['{}'.format("legacy_fut")],vars()['{}'.format("legacy_futopt")],vars()['{}'.format("supplemental_futopt")],\
   vars()['{}'.format("disaggregated_fut")],vars()['{}'.format("disaggregated_futopt")],vars()['{}'.format("traders_in_financial_futures_fut")],\
