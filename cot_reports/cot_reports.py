@@ -195,7 +195,7 @@ def cot_all(cot_report_type="legacy_fut", store_txt=True, verbose=True):
     df = cot_hist(cot_report_type, store_txt=store_txt, verbose=verbose)
     for i in range(2017, date.today().year+1):
         years = pd.DataFrame(cot_year(i, cot_report_type, store_txt=store_txt, verbose=verbose))
-        df = df.append(years, ignore_index=True) 
+        df = pd.concat([df, years])
     return df
 
 ## Example:
