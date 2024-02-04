@@ -89,7 +89,7 @@ begin_year = 2017
 end_year = 2020
 for i in range(begin_year, end_year + 1):
     single_year = pd.DataFrame(cot.cot_year(i, cot_report_type='legacy_futopt')) 
-    df = df.append(single_year, ignore_index=True)
+    df = pd.concat([df, single_year], ignore_index=True)
 
 # Example: cot_all()
 df = cot.cot_all(cot_report_type='legacy_fut')
